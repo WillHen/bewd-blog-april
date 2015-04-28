@@ -1,0 +1,15 @@
+<div class="actions">
+<%= link_to "home", root_path, class: "actions__link" %>
+</div>
+
+<%= simple_form_for @post do |form| %>
+    <%= form.input :title %>
+    <%= form.input :publication %>
+    <%= form.input :url %>
+    <%= form.input :published_at, label: "Date of first publication", order: [:day, :month, :year] %>
+    <%= form.input :author %>
+    <%= form.input :pull_quote %>
+    <%= form.input :body %>
+    <%= form.input :pull_quote %>
+    <%= form.button :submit %>
+<% end %>

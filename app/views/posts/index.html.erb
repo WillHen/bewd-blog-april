@@ -1,0 +1,26 @@
+<h1>Posts#index</h1>
+<p>Find me in app/views/posts/index.html.erb</p>
+<header>
+    <h1>
+        <%= link_to "Writing Ruby", root_path %>
+    </h1>
+    <!-- Add in quotes for the carousel -->
+    <div class-"carousel">
+        <h3>The first draft of anything is shit.<br><cite>- Hemmingway</cite></h3>
+    </div>
+</header>
+<section class="posts">
+    <% @posts.each do |post| %>
+    
+<section class= "post"></section>
+        <h2><%= link_to post.title, post_path(post) %></h2>
+        <p><%= truncate post.body, {length: 90, 
+        seperator: " "} %></p>
+        <p>
+            <!-- Add in link to publication later -->
+            <small>Posted <%= time_ago_in_words post.created_at %> ago.</small>
+        </p>
+    </section>
+<% end %>
+<!-- Add in link to pagination -->
+</section>
