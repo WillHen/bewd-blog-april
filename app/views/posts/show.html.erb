@@ -23,4 +23,12 @@
     </section>
 <section class="post__body">
     <%= simple_format @post.body %>
+    <h3>Comments</h3>
+    <div class="post__comments">
+<!--Loop over @comments-->
+    <% @comments.each do |comment| %>
+    <%= simple_format comment.body %>
+    <p>Commented by <%=  comment.commenter_name %>  </p>  
+    <% end %>
+    </div>
 </section>
