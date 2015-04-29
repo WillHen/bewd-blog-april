@@ -3,7 +3,7 @@ class PostsController < ApplicationController
     
   def index
       #assign all posts to @posts
-      @posts = Post.all
+      @posts = Post.all.page params[:page]
       #render the index template (happening behind the scenes)
   end
   def show

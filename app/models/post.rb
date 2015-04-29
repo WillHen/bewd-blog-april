@@ -6,5 +6,7 @@ class Post < ActiveRecord::Base
     validates :body, presence: true, length: {minimum: 20, maximum: 5000}
     validates :author, presence: true
     
+    paginates_per 2
+    
  
 end
