@@ -8,5 +8,9 @@ class Post < ActiveRecord::Base
     
     paginates_per 2
     
+    def self.from_param(param)
+        where(author: NameCase(param))
+    end
+    
  
 end

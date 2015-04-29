@@ -5,10 +5,19 @@
         <%= link_to "Writing Ruby", root_path %>
     </h1>
     <!-- Add in quotes for the carousel -->
-    <div class-"carousel">
+    <div class-"carousel" data-quotes="<%= @quotes %>">
         <h3>The first draft of anything is shit.<br><cite>- Hemmingway</cite></h3>
     </div>
 </header>
+<nav class="pagination pagination__top">
+     <span class="next">
+        <%= link_to_next_page @posts, 'next' %>
+    </span>
+    <span class="previous">
+        <%= link_to_previous_page @posts, 'previous page' %>
+    </span>
+</nav>
+
 <section class="posts">
     <% @posts.each do |post| %>
     

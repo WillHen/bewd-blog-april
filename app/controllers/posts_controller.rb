@@ -2,10 +2,15 @@ class PostsController < ApplicationController
     before_action :find_post, except: [:index, :new, :create]
     
   def index
+      if params[:author].present?
+          @posts = Post.from_param(params[:author]).page(params[:page])
+      else
+        @posts = Post.all.page(params[:page])
       #assign all posts to @posts
-      @posts = Post.all.page params[:page]
       #render the index template (happening behind the scenes)
-  end
+    end
+      @quotes = @posts.pluck(:pull_quote)
+    end
   def show
       #assign one post to @post
       #assign all comments for the post to @comments
@@ -37,7 +42,7 @@ class PostsController < ApplicationController
 
     def update
         # assign the post we want to edit to post
-        if @post.saves 
+        if @post.update(post_params)
             flash[:success] = "Your post was Updated."
             redirect_to @post
         else
