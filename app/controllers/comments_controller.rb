@@ -8,13 +8,16 @@ class CommentsController < ApplicationController
 
   def create
       #assign a new comment with form data to @comment
-      #if it saves 
-      #flash success
-      # and redirect to show post
-      #else 
-      # flash error 
-      #render new
-end
+      @post = Post.find(params[:post_id])
+      @comment = @post.comments.new(comment_params)
+      if @comment.save 
+      flash[:success] = "Thanks for commenting on #{@post.title}"
+      redirect_to @post
+      else 
+      flash[:error] = t(:error_msg)
+      render :new
+     end
+  end
   def edit
       #find the post
       #Assign the comment to @comment
@@ -36,5 +39,9 @@ end
         #delete comment
         #redirect to show post
     end
-    #whitelist data from the form    
+    #whitelist data from the form  
+    private
+    def comment_params
+        params.require(:comment).permit(:body, :commenter)
+    end
 end
