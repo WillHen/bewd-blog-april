@@ -8,6 +8,8 @@ class PostsController < ApplicationController
   end
   def show
       #assign one post to @post
+      #assign all comments for the post to @comments
+      @comments = @post.comments.all
       #render show template (impicaity rendering in the background)
   end
     
